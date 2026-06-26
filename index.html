@@ -1,0 +1,244 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Debt-Free Workbook — pay off debt faster with a free snowball vs avalanche calculator</title>
+<meta name="description" content="Free debt-payoff calculator: see your debt-free date and total interest for the snowball vs avalanche method. Then get the full budget & payoff workbook (Excel + Google Sheets), $14 one-time.">
+<link rel="canonical" href="https://comil27.github.io/">
+<meta property="og:title" content="Debt-Free Workbook — pay off debt faster with a free snowball vs avalanche calculator"><meta property="og:description" content="Free debt-payoff calculator: see your debt-free date and total interest for the snowball vs avalanche method. Then get the full budget & payoff workbook (Excel + Google Sheets), $14 one-time.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://comil27.github.io/">
+<meta name="twitter:card" content="summary"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebApplication","name":"Debt-Free Workbook debt-payoff calculator","url":"https://comil27.github.io/","applicationCategory":"FinanceApplication","operatingSystem":"Any (web browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free snowball vs avalanche debt-payoff calculator — see your debt-free date and total interest in the browser."},{"@context":"https://schema.org","@type":"Organization","name":"Debt-Free Workbook","url":"https://comil27.github.io/"}]</script><style>
+:root{--bg:#f6f8f8;--ink:#16232a;--mut:#5a6a72;--line:#e4eaea;--card:#fff;
+--acc:#1f6f6b;--acc2:#13524f;--ok:#15a36e;--warn:#c2410c;--input:#fffbea}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+.wrap{max-width:920px;margin:0 auto;padding:0 20px}
+a{color:var(--acc);text-decoration:none}a:hover{text-decoration:underline}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-weight:800;font-size:20px;letter-spacing:-.3px;color:var(--ink)}
+.logo b{color:var(--acc)}
+.hero{text-align:center;padding:30px 0 6px}
+.hero h1{font-size:39px;line-height:1.12;letter-spacing:-1px;margin:.2em 0}
+.hero p.lead{font-size:19px;color:var(--mut);max-width:640px;margin:14px auto 22px}
+.grad{color:var(--acc)}
+.badge{display:inline-block;background:#e7f2f1;color:var(--acc);border:1px solid #c7e3e1;border-radius:999px;padding:5px 13px;font-size:13px;font-weight:600}
+.btn{display:inline-block;background:var(--acc);color:#fff;font-weight:700;border:0;border-radius:11px;padding:13px 22px;font-size:16px;cursor:pointer}
+.btn:hover{filter:brightness(.96);text-decoration:none}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 30px rgba(20,40,40,.05);margin:26px 0}
+.tool h3{margin:0 0 4px}
+table.debts{width:100%;border-collapse:collapse;margin-top:8px}
+table.debts th{font-size:12px;color:var(--mut);text-align:left;font-weight:600;padding:4px 6px}
+table.debts td{padding:3px 6px}
+table.debts input{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;font-size:15px;background:var(--input)}
+table.debts input.name{background:#fff}
+.x{cursor:pointer;color:var(--mut);font-size:18px;border:0;background:0;padding:0 4px}
+.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-top:14px}
+.fld{display:flex;flex-direction:column;gap:4px}
+.fld label{font-size:12px;color:var(--mut);font-weight:600}
+.fld input{padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:16px;background:var(--input);max-width:160px}
+.note{color:var(--mut);font-size:13px;margin-top:12px}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.rcard{border:1px solid var(--line);border-radius:13px;padding:16px;background:#fff}
+.rcard.win{border-color:var(--acc);box-shadow:0 6px 22px rgba(31,111,107,.12)}
+.rcard h4{margin:0 0 8px;font-size:15px;display:flex;justify-content:space-between;align-items:center}
+.tag{font-size:11px;font-weight:700;color:#fff;background:var(--acc);border-radius:999px;padding:2px 9px}
+.big{font-size:30px;font-weight:800;letter-spacing:-.5px}
+.kv{color:var(--mut);font-size:14px;margin:4px 0}
+.kv b{color:var(--ink)}
+.save{text-align:center;background:#e7f2f1;border:1px solid #c7e3e1;border-radius:12px;padding:14px;margin-top:16px;font-size:16px}
+.sec{margin:46px 0}
+.sec h2{font-size:27px;letter-spacing:-.5px;text-align:center;margin-bottom:6px}
+.sec .sub{color:var(--mut);text-align:center;margin:0 auto 22px;max-width:580px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h4{margin:0 0 6px;font-size:16px}.card p{margin:0;color:var(--mut);font-size:14px}
+.price{background:var(--card);border:2px solid var(--acc);border-radius:18px;padding:28px;text-align:center;max-width:440px;margin:0 auto;box-shadow:0 10px 36px rgba(31,111,107,.12)}
+.price .amt{font-size:46px;font-weight:800;letter-spacing:-1px}
+.price .amt small{font-size:18px;color:var(--mut);font-weight:500}
+.price ul{text-align:left;max-width:330px;margin:16px auto 22px;padding-left:20px}
+.price li{margin:6px 0}
+.faq{max-width:680px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:600}
+.faq p{color:var(--mut);margin:10px 0 0}
+.trust{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;color:var(--mut);font-size:13px;margin-top:14px}
+footer{color:var(--mut);font-size:13px;text-align:center;padding:40px 0 30px;border-top:1px solid var(--line);margin-top:40px}
+table.ptbl{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.ptbl th,table.ptbl td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:15px}
+table.ptbl th{font-size:12px;color:var(--mut);font-weight:600;background:#f0f4f4}
+table.ptbl tr:last-child td{border-bottom:0}
+table.ptbl tr.hl td{background:#e7f2f1;font-weight:700}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.pill{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13px;color:var(--acc)}
+.pill:hover{border-color:var(--acc);text-decoration:none}
+@media(max-width:680px){.grid,.res{grid-template-columns:1fr}.hero h1{font-size:31px}}
+</style></head><body>
+<div class="wrap">
+<header>
+  <div class="logo"><b>Debt-Free</b> Workbook</div>
+  <a class="btn ghost" href="#pricing">Get the workbook — $14</a>
+</header>
+
+<section class="hero">
+  <span class="badge">Free calculator · No signup</span>
+  <h1>See your <span class="grad">debt-free date</span> in 30 seconds.</h1>
+  <p class="lead">Enter your debts below. Find out exactly when you'll be debt-free and how much interest each payoff method costs you — the <b>snowball</b> vs the <b>avalanche</b>. Then keep it all on track with the full workbook.</p>
+  <a class="btn" href="#calc">Calculate my payoff — free</a>
+</section>
+
+<section class="tool" id="calc">
+  <h3>Free debt-payoff calculator</h3>
+  <p class="note" style="margin-top:2px">Add your debts, set what extra you can put toward them each month, and compare both methods. Nothing is sent anywhere — it runs right in your browser.</p>
+  <table class="debts" id="tbl">
+    <thead><tr><th style="width:34%">Debt</th><th>Balance</th><th>APR %</th><th>Min / mo</th><th></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <button class="btn ghost" id="add" style="margin-top:10px;padding:9px 14px;font-size:14px">+ Add debt</button>
+  <div class="controls">
+    <div class="fld"><label>Extra per month</label><input id="extra" type="number" min="0" step="10" value="100"></div>
+    <button class="btn" id="go">Calculate</button>
+  </div>
+  <div id="out"></div>
+</section>
+
+<section class="sec">
+  <h2>Snowball or avalanche — which clears your debt sooner?</h2>
+  <p class="sub">Both roll every freed-up payment onto your next debt. They just differ on the order.</p>
+  <div class="grid">
+    <div class="card"><h4>❄️ Snowball</h4><p>Attack the <b>smallest balance</b> first. You clear whole debts fast, which keeps you motivated — but you may pay a little more interest.</p></div>
+    <div class="card"><h4>🏔️ Avalanche</h4><p>Attack the <b>highest APR</b> first. Mathematically cheapest — the least total interest — though the first win can take longer.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="whats-inside">
+  <h2>What's in the workbook</h2>
+  <p class="sub">One file you own — opens in Excel and imports straight into Google Sheets. Every number is a live formula, not a screenshot.</p>
+  <div class="grid">
+    <div class="card"><h4>Payoff Plan engine</h4><p>The same snowball/avalanche engine as above — flip a dropdown to compare, see your debt-free month and total interest update instantly.</p></div>
+    <div class="card"><h4>Monthly budget</h4><p>Income vs. expenses by category, with a live "left to budget" so every dollar has a job.</p></div>
+    <div class="card"><h4>Sinking funds</h4><p>Save ahead for the irregular bills (car, holidays, insurance) that wreck a budget.</p></div>
+    <div class="card"><h4>Net worth + 52-week challenge</h4><p>Track assets minus debts over time, plus a savings challenge that quietly stacks ~$1,378.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="pricing">
+  <h2>Get the full workbook</h2>
+  <p class="sub">Stop rebuilding spreadsheets. Own the whole system once.</p>
+  <div class="price">
+    <div class="amt">$14 <small>one-time</small></div>
+    <ul>
+      <li><b>8 tabs</b> — dashboard, debts, payoff engine, budget, sinking funds, net worth, 52-week challenge, instructions</li>
+      <li><b>Live snowball & avalanche</b> payoff engine (up to 20 debts)</li>
+      <li><b>Excel .xlsx you own</b> — also imports to Google Sheets</li>
+      <li>No subscription, no login, yours forever</li>
+      <li>Instant download · 7-day money-back</li>
+    </ul>
+    <a class="btn" href="https://buy.stripe.com/bJe14pbsdailfi91v0gIo06" style="font-size:18px;padding:14px 30px">Get the workbook — $14</a>
+    <div class="trust"><span>⬇ Instant download</span><span>↩ 7-day refund</span><span>🔒 Secure checkout</span></div>
+  </div>
+  <p class="sub" style="margin-top:16px">No guarantees and no fake testimonials — just an honest, well-built tool that does the math for you.</p>
+</section>
+
+<section class="sec faq">
+  <h2>Questions</h2>
+  <details><summary>Isn't the calculator above enough?</summary><p>For a one-time look, yes — that's why it's free. The workbook is for <i>living</i> with the plan: budget every month, track sinking funds and net worth, and watch your real debt-free date move as you pay things down. It's the difference between a snapshot and a system.</p></details>
+  <details><summary>Excel or Google Sheets?</summary><p>Both. You get an .xlsx that opens in Excel, Numbers, or LibreOffice, and imports cleanly into Google Sheets (File → Import). Every formula carries over.</p></details>
+  <details><summary>Will this get me out of debt?</summary><p>No spreadsheet can promise that. What it does is show you the fastest, cheapest path and keep the math honest so you can stick to it. The discipline is still yours.</p></details>
+  <details><summary>What exactly do I get?</summary><p>A single .xlsx file, downloaded instantly after checkout. No accounts, no add-ons, no upsells.</p></details>
+  <details><summary>Refunds?</summary><p>If it's not useful, email within 7 days for a full refund.</p></details>
+</section>
+
+<section class="sec">
+  <h2>Popular payoff examples</h2>
+  <p class="sub">See exactly how long a balance takes to clear at today's card rates — minimum vs extra payments.</p>
+  <div class="pills"><a class="pill" href="/debt-payoff/5000-at-22-apr">$5,000 at 22% APR</a><a class="pill" href="/debt-payoff/10000-at-24-apr">$10,000 at 24% APR</a><a class="pill" href="/debt-payoff/20000-at-29-apr">$20,000 at 29% APR</a><a class="pill" href="/debt-payoff/7500-at-18-apr">$7,500 at 18% APR</a><a class="pill" href="/debt-payoff/15000-at-26-apr">$15,000 at 26% APR</a><a class="pill" href="/debt-payoff/2500-at-18-apr">$2,500 at 18% APR</a><a class="pill" href="/debt-payoff/25000-at-22-apr">$25,000 at 22% APR</a><a class="pill" href="/debt-payoff/30000-at-24-apr">$30,000 at 24% APR</a><a class="pill" href="/debt-payoff/5000-at-29-apr">$5,000 at 29% APR</a><a class="pill" href="/debt-payoff/10000-at-18-apr">$10,000 at 18% APR</a><a class="pill" href="/debt-payoff/50000-at-29-apr">$50,000 at 29% APR</a><a class="pill" href="/debt-payoff/1000-at-29-apr">$1,000 at 29% APR</a></div>
+  <p class="sub" style="margin-top:10px"><a href="/debt-payoff">Browse all payoff examples →</a></p>
+</section>
+
+<footer>Debt-Free Workbook · An honest budget & debt-payoff workbook. The math is done for you; the discipline is yours.</footer>
+</div>
+
+<script>const simulate=function simulate(debts, extra, strategy) {
+  // debts: [{name,balance,apr,min}] · extra: number · strategy: "snowball" | "avalanche"
+  // -> { months, interest, order:[names cleared, in order], paid:boolean }
+  const d = debts
+    .map(x => ({ name: x.name, bal: +x.balance || 0, apr: +x.apr || 0, min: +x.min || 0 }))
+    .filter(x => x.bal > 0);
+  if (!d.length) return { months: 0, interest: 0, order: [], paid: true };
+  // lower rank value is attacked first
+  const rank = x => (strategy === "avalanche" ? -x.apr : x.bal);
+  const budget = d.reduce((s, x) => s + x.min, 0) + (+extra || 0); // fixed total payment
+  let months = 0, interest = 0;
+  const order = [];
+  const MAX = 600; // 50-year guard against minimums that never beat interest
+  while (d.some(x => x.bal > 0.005) && months < MAX) {
+    months++;
+    for (const x of d) {
+      if (x.bal > 0) { const i = x.bal * (x.apr / 100 / 12); x.bal += i; interest += i; }
+    }
+    let left = budget;
+    for (const x of d) { // minimums first (capped at balance; the cap rolls into `left`)
+      if (x.bal > 0) { const pay = Math.min(x.min, x.bal); x.bal -= pay; left -= pay; }
+    }
+    if (left < 0) left = 0;
+    const owed = d.filter(x => x.bal > 0.005).sort((a, b) => rank(a) - rank(b));
+    for (const x of owed) { // funnel everything left onto the priority debt(s)
+      if (left <= 0) break;
+      const pay = Math.min(left, x.bal); x.bal -= pay; left -= pay;
+    }
+    for (const x of d) if (x.bal <= 0.005 && !order.includes(x.name)) order.push(x.name);
+  }
+  return { months, interest: Math.round(interest * 100) / 100, order, paid: d.every(x => x.bal <= 0.005) };
+};</script>
+<script>
+const rows=document.getElementById('rows');
+const seed=[["Credit card",4200,22.9,110],["Car loan",9800,6.5,260],["Student loan",15000,5.2,180]];
+function rowHtml(n,b,a,m){return '<tr>'+
+  '<td><input class="name" value="'+n+'" placeholder="e.g. Visa"></td>'+
+  '<td><input type="number" min="0" step="100" value="'+b+'"></td>'+
+  '<td><input type="number" min="0" step="0.1" value="'+a+'"></td>'+
+  '<td><input type="number" min="0" step="5" value="'+m+'"></td>'+
+  '<td><button class="x" title="remove">×</button></td></tr>';}
+function addRow(n="",b="",a="",m=""){rows.insertAdjacentHTML('beforeend',rowHtml(n,b,a,m));}
+seed.forEach(r=>addRow(...r));
+document.getElementById('add').onclick=()=>addRow();
+rows.addEventListener('click',e=>{if(e.target.classList.contains('x'))e.target.closest('tr').remove();});
+
+function readDebts(){
+  return [...rows.querySelectorAll('tr')].map(tr=>{
+    const i=tr.querySelectorAll('input');
+    return {name:(i[0].value||'Debt').slice(0,24),balance:+i[1].value,apr:+i[2].value,min:+i[3].value};
+  }).filter(d=>d.balance>0);
+}
+function money(n){return '$'+Math.round(n).toLocaleString();}
+function dur(m){const y=Math.floor(m/12),mo=m%12;return (y?y+' yr ':'')+(mo||!y?mo+' mo':'').trim()||'0 mo';}
+function dateAfter(m){const d=new Date();d.setMonth(d.getMonth()+m);return d.toLocaleString('en-US',{month:'short',year:'numeric'});}
+
+function rcard(label,emoji,r,win){
+  if(!r.paid) return '<div class="rcard"><h4>'+emoji+' '+label+'</h4>'+
+    '<p class="kv" style="color:var(--warn)">With these minimums, interest outruns your payments — this debt never clears. Add more to "extra per month."</p></div>';
+  return '<div class="rcard'+(win?' win':'')+'"><h4>'+emoji+' '+label+(win?' <span class="tag">saves more</span>':'')+'</h4>'+
+    '<div class="big">'+dur(r.months)+'</div>'+
+    '<p class="kv">Debt-free by <b>'+dateAfter(r.months)+'</b></p>'+
+    '<p class="kv">Total interest <b>'+money(r.interest)+'</b></p>'+
+    '<p class="kv">Order: '+r.order.join(' → ')+'</p></div>';
+}
+function calc(){
+  const debts=readDebts(),extra=+document.getElementById('extra').value||0;
+  const out=document.getElementById('out');
+  if(!debts.length){out.innerHTML='<p class="note">Add at least one debt with a balance above $0.</p>';return;}
+  const snow=simulate(debts,extra,'snowball'),aval=simulate(debts,extra,'avalanche');
+  let save='';
+  if(snow.paid&&aval.paid){
+    const di=snow.interest-aval.interest, dm=snow.months-aval.months;
+    if(di>1||dm>0) save='<div class="save"><b>Avalanche</b> saves you '+money(di)+' in interest'+(dm>0?' and '+dur(dm)+'':'')+' versus snowball.</div>';
+    else if(di<-1) save='<div class="save">They cost about the same here — go with <b>snowball</b> for the faster first win.</div>';
+    else save='<div class="save">Both methods come out about the same for these debts — pick whichever keeps you motivated.</div>';
+  }
+  const avalWins=aval.paid&&snow.paid&&aval.interest<=snow.interest;
+  out.innerHTML='<div class="res">'+rcard('Snowball','❄️',snow,!avalWins&&snow.paid)+rcard('Avalanche','🏔️',aval,avalWins)+'</div>'+save+
+    '<p class="note" style="text-align:center;margin-top:16px">This is the same engine that powers the workbook. Want to budget, track net worth, and watch this update every month? <a href="#pricing">Get the full workbook — '+'$14'+' →</a></p>';
+}
+document.getElementById('go').onclick=calc;
+calc();
+</script>
+</body></html>
